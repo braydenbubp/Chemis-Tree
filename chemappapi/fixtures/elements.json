@@ -1,0 +1,1182 @@
+[
+  {
+    "model": "chemappapi.element",
+    "pk": 1,
+    "fields": {
+      "name": "Hydrogen",
+      "symbol": "H",
+      "mass": 1.0080,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 2,
+    "fields": {
+      "name": "Helium",
+      "symbol": "He",
+      "mass": 4.0026,
+      "group": "Noble Gas"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 3,
+    "fields": {
+      "name": "Lithium",
+      "symbol": "Li",
+      "mass": 6.9410,
+      "group": "Alkali Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 4,
+    "fields": {
+      "name": "Beryllium",
+      "symbol": "Be",
+      "mass": 9.0122,
+      "group": "Alkaline Earth Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 5,
+    "fields": {
+      "name": "Boron",
+      "symbol": "B",
+      "mass": 10.8110,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 6,
+    "fields": {
+      "name": "Carbon",
+      "symbol": "C",
+      "mass": 12.0107,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 7,
+    "fields": {
+      "name": "Nitrogen",
+      "symbol": "N",
+      "mass": 14.0067,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 8,
+    "fields": {
+      "name": "Oxygen",
+      "symbol": "O",
+      "mass": 15.9994,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 9,
+    "fields": {
+      "name": "Fluorine",
+      "symbol": "F",
+      "mass": 18.9984,
+      "group": "Halogen"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 10,
+    "fields": {
+      "name": "Neon",
+      "symbol": "Ne",
+      "mass": 20.1797,
+      "group": "Noble Gas"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 11,
+    "fields": {
+      "name": "Sodium",
+      "symbol": "Na",
+      "mass": 22.9897,
+      "group": "Alkali Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 12,
+    "fields": {
+      "name": "Magnesium",
+      "symbol": "Mg",
+      "mass": 24.3050,
+      "group": "Alkaline Earth Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 13,
+    "fields": {
+      "name": "Aluminum",
+      "symbol": "Al",
+      "mass": 26.9815,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 14,
+    "fields": {
+      "name": "Silicon",
+      "symbol": "Si",
+      "mass": 28.0855,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 15,
+    "fields": {
+      "name": "Phosphorus",
+      "symbol": "P",
+      "mass": 30.9738,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 16,
+    "fields": {
+      "name": "Sulfur",
+      "symbol": "S",
+      "mass": 32.0650,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 17,
+    "fields": {
+      "name": "Chlorine",
+      "symbol": "Cl",
+      "mass": 35.4530,
+      "group": "Halogen"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 18,
+    "fields": {
+      "name": "Argon",
+      "symbol": "Ar",
+      "mass": 39.9480,
+      "group": "Noble Gas"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 19,
+    "fields": {
+      "name": "Potassium",
+      "symbol": "K",
+      "mass": 39.0983,
+      "group": "Alkali Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 20,
+    "fields": {
+      "name": "Calcium",
+      "symbol": "Ca",
+      "mass": 40.0780,
+      "group": "Alkaline Earth Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 21,
+    "fields": {
+      "name": "Scandium",
+      "symbol": "Sc",
+      "mass": 44.9559,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 22,
+    "fields": {
+      "name": "Titanium",
+      "symbol": "Ti",
+      "mass": 47.8670,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 23,
+    "fields": {
+      "name": "Vanadium",
+      "symbol": "V",
+      "mass": 50.9415,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 24,
+    "fields": {
+      "name": "Chromium",
+      "symbol": "Cr",
+      "mass": 51.9961,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 25,
+    "fields": {
+      "name": "Manganese",
+      "symbol": "Mn",
+      "mass": 54.9380,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 26,
+    "fields": {
+      "name": "Iron",
+      "symbol": "Fe",
+      "mass": 55.8450,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 27,
+    "fields": {
+      "name": "Cobalt",
+      "symbol": "Co",
+      "mass": 58.9332,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 28,
+    "fields": {
+      "name": "Nickel",
+      "symbol": "Ni",
+      "mass": 58.6934,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 29,
+    "fields": {
+      "name": "Copper",
+      "symbol": "Cu",
+      "mass": 63.5460,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 30,
+    "fields": {
+      "name": "Zinc",
+      "symbol": "Zn",
+      "mass": 65.3800,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 31,
+    "fields": {
+      "name": "Gallium",
+      "symbol": "Ga",
+      "mass": 69.7230,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 32,
+    "fields": {
+      "name": "Germanium",
+      "symbol": "Ge",
+      "mass": 72.6400,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 33,
+    "fields": {
+      "name": "Arsenic",
+      "symbol": "As",
+      "mass": 74.9216,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 34,
+    "fields": {
+      "name": "Selenium",
+      "symbol": "Se",
+      "mass": 78.9600,
+      "group": "Nonmetal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 35,
+    "fields": {
+      "name": "Bromine",
+      "symbol": "Br",
+      "mass": 79.9040,
+      "group": "Halogen"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 36,
+    "fields": {
+      "name": "Krypton",
+      "symbol": "Kr",
+      "mass": 83.7980,
+      "group": "Noble Gas"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 37,
+    "fields": {
+      "name": "Rubidium",
+      "symbol": "Rb",
+      "mass": 85.4678,
+      "group": "Alkali Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 38,
+    "fields": {
+      "name": "Strontium",
+      "symbol": "Sr",
+      "mass": 87.6200,
+      "group": "Alkaline Earth Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 39,
+    "fields": {
+      "name": "Yttrium",
+      "symbol": "Y",
+      "mass": 88.9059,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 40,
+    "fields": {
+      "name": "Zirconium",
+      "symbol": "Zr",
+      "mass": 91.2240,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 41,
+    "fields": {
+      "name": "Niobium",
+      "symbol": "Nb",
+      "mass": 92.9064,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 42,
+    "fields": {
+      "name": "Molybdenum",
+      "symbol": "Mo",
+      "mass": 95.9600,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 43,
+    "fields": {
+      "name": "Technetium",
+      "symbol": "Tc",
+      "mass": 98.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 44,
+    "fields": {
+      "name": "Ruthenium",
+      "symbol": "Ru",
+      "mass": 101.0700,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 45,
+    "fields": {
+      "name": "Rhodium",
+      "symbol": "Rh",
+      "mass": 102.9055,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 46,
+    "fields": {
+      "name": "Palladium",
+      "symbol": "Pd",
+      "mass": 106.4200,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 47,
+    "fields": {
+      "name": "Silver",
+      "symbol": "Ag",
+      "mass": 107.8682,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 48,
+    "fields": {
+      "name": "Cadmium",
+      "symbol": "Cd",
+      "mass": 112.4110,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 49,
+    "fields": {
+      "name": "Indium",
+      "symbol": "In",
+      "mass": 114.8180,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 50,
+    "fields": {
+      "name": "Tin",
+      "symbol": "Sn",
+      "mass": 118.7100,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 51,
+    "fields": {
+      "name": "Antimony",
+      "symbol": "Sb",
+      "mass": 121.7600,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 52,
+    "fields": {
+      "name": "Tellurium",
+      "symbol": "Te",
+      "mass": 127.6000,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 53,
+    "fields": {
+      "name": "Iodine",
+      "symbol": "I",
+      "mass": 126.9045,
+      "group": "Halogen"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 54,
+    "fields": {
+      "name": "Xenon",
+      "symbol": "Xe",
+      "mass": 131.2930,
+      "group": "Noble Gas"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 55,
+    "fields": {
+      "name": "Cesium",
+      "symbol": "Cs",
+      "mass": 132.9055,
+      "group": "Alkali Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 56,
+    "fields": {
+      "name": "Barium",
+      "symbol": "Ba",
+      "mass": 137.3277,
+      "group": "Alkaline Earth Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 57,
+    "fields": {
+      "name": "Lanthanum",
+      "symbol": "La",
+      "mass": 138.9055,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 58,
+    "fields": {
+      "name": "Cerium",
+      "symbol": "Ce",
+      "mass": 140.1160,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 59,
+    "fields": {
+      "name": "Praseodymium",
+      "symbol": "Pr",
+      "mass": 140.9077,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 60,
+    "fields": {
+      "name": "Neodymium",
+      "symbol": "Nd",
+      "mass": 144.2420,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 61,
+    "fields": {
+      "name": "Promethium",
+      "symbol": "Pm",
+      "mass": 145.0000,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 62,
+    "fields": {
+      "name": "Samarium",
+      "symbol": "Sm",
+      "mass": 150.3600,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 63,
+    "fields": {
+      "name": "Europium",
+      "symbol": "Eu",
+      "mass": 151.9640,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 64,
+    "fields": {
+      "name": "Gadolinium",
+      "symbol": "Gd",
+      "mass": 157.2500,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 65,
+    "fields": {
+      "name": "Terbium",
+      "symbol": "Tb",
+      "mass": 158.9254,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 66,
+    "fields": {
+      "name": "Dysprosium",
+      "symbol": "Dy",
+      "mass": 162.5000,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 67,
+    "fields": {
+      "name": "Holmium",
+      "symbol": "Ho",
+      "mass": 164.9303,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 68,
+    "fields": {
+      "name": "Erbium",
+      "symbol": "Er",
+      "mass": 167.2590,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 69,
+    "fields": {
+      "name": "Thulium",
+      "symbol": "Tm",
+      "mass": 168.9342,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 70,
+    "fields": {
+      "name": "Ytterbium",
+      "symbol": "Yb",
+      "mass": 173.0540,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 71,
+    "fields": {
+      "name": "Lutetium",
+      "symbol": "Lu",
+      "mass": 174.9668,
+      "group": "Lanthanide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 72,
+    "fields": {
+      "name": "Hafnium",
+      "symbol": "Hf",
+      "mass": 178.4900,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 73,
+    "fields": {
+      "name": "Tantalum",
+      "symbol": "Ta",
+      "mass": 180.9479,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 74,
+    "fields": {
+      "name": "Tungsten",
+      "symbol": "W",
+      "mass": 183.8400,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 75,
+    "fields": {
+      "name": "Rhenium",
+      "symbol": "Re",
+      "mass": 186.2070,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 76,
+    "fields": {
+      "name": "Osmium",
+      "symbol": "Os",
+      "mass": 190.2300,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 77,
+    "fields": {
+      "name": "Iridium",
+      "symbol": "Ir",
+      "mass": 192.2170,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 78,
+    "fields": {
+      "name": "Platinum",
+      "symbol": "Pt",
+      "mass": 195.0840,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 79,
+    "fields": {
+      "name": "Gold",
+      "symbol": "Au",
+      "mass": 196.9665,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 80,
+    "fields": {
+      "name": "Mercury",
+      "symbol": "Hg",
+      "mass": 200.5920,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 81,
+    "fields": {
+      "name": "Thallium",
+      "symbol": "Tl",
+      "mass": 204.3833,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 82,
+    "fields": {
+      "name": "Lead",
+      "symbol": "Pb",
+      "mass": 207.2000,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 83,
+    "fields": {
+      "name": "Bismuth",
+      "symbol": "Bi",
+      "mass": 208.9804,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 84,
+    "fields": {
+      "name": "Polonium",
+      "symbol": "Po",
+      "mass": 209.0000,
+      "group": "Metalloid"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 85,
+    "fields": {
+      "name": "Astatine",
+      "symbol": "At",
+      "mass": 210.0000,
+      "group": "Halogen"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 86,
+    "fields": {
+      "name": "Radon",
+      "symbol": "Rn",
+      "mass": 222.0000,
+      "group": "Noble Gas"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 87,
+    "fields": {
+      "name": "Francium",
+      "symbol": "Fr",
+      "mass": 223.0000,
+      "group": "Alkali Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 88,
+    "fields": {
+      "name": "Radium",
+      "symbol": "Ra",
+      "mass": 226.0000,
+      "group": "Alkaline Earth Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 89,
+    "fields": {
+      "name": "Actinium",
+      "symbol": "Ac",
+      "mass": 227.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 90,
+    "fields": {
+      "name": "Thorium",
+      "symbol": "Th",
+      "mass": 232.0381,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 91,
+    "fields": {
+      "name": "Protactinium",
+      "symbol": "Pa",
+      "mass": 231.0359,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 92,
+    "fields": {
+      "name": "Uranium",
+      "symbol": "U",
+      "mass": 238.0289,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 93,
+    "fields": {
+      "name": "Neptunium",
+      "symbol": "Np",
+      "mass": 237.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 94,
+    "fields": {
+      "name": "Plutonium",
+      "symbol": "Pu",
+      "mass": 244.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 95,
+    "fields": {
+      "name": "Americium",
+      "symbol": "Am",
+      "mass": 243.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 96,
+    "fields": {
+      "name": "Curium",
+      "symbol": "Cm",
+      "mass": 247.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 97,
+    "fields": {
+      "name": "Berkelium",
+      "symbol": "Bk",
+      "mass": 247.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 98,
+    "fields": {
+      "name": "Californium",
+      "symbol": "Cf",
+      "mass": 251.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 99,
+    "fields": {
+      "name": "Einsteinium",
+      "symbol": "Es",
+      "mass": 252.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 100,
+    "fields": {
+      "name": "Fermium",
+      "symbol": "Fm",
+      "mass": 257.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 101,
+    "fields": {
+      "name": "Mendelevium",
+      "symbol": "Md",
+      "mass": 258.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 102,
+    "fields": {
+      "name": "Nobelium",
+      "symbol": "No",
+      "mass": 259.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 103,
+    "fields": {
+      "name": "Lawrencium",
+      "symbol": "Lr",
+      "mass": 262.0000,
+      "group": "Actinide"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 104,
+    "fields": {
+      "name": "Rutherfordium",
+      "symbol": "Rf",
+      "mass": 267.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 105,
+    "fields": {
+      "name": "Dubnium",
+      "symbol": "Db",
+      "mass": 268.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 106,
+    "fields": {
+      "name": "Seaborgium",
+      "symbol": "Sg",
+      "mass": 271.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 107,
+    "fields": {
+      "name": "Bohrium",
+      "symbol": "Bh",
+      "mass": 272.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 108,
+    "fields": {
+      "name": "Hassium",
+      "symbol": "Hs",
+      "mass": 270.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 109,
+    "fields": {
+      "name": "Meitnerium",
+      "symbol": "Mt",
+      "mass": 276.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 110,
+    "fields": {
+      "name": "Darmstadtium",
+      "symbol": "Ds",
+      "mass": 281.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 111,
+    "fields": {
+      "name": "Roentgenium",
+      "symbol": "Rg",
+      "mass": 280.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 112,
+    "fields": {
+      "name": "Copernicium",
+      "symbol": "Cn",
+      "mass": 285.0000,
+      "group": "Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 113,
+    "fields": {
+      "name": "Nihonium",
+      "symbol": "Nh",
+      "mass": 284.0000,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 114,
+    "fields": {
+      "name": "Flerovium",
+      "symbol": "Fl",
+      "mass": 289.0000,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 115,
+    "fields": {
+      "name": "Moscovium",
+      "symbol": "Mc",
+      "mass": 288.0000,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 116,
+    "fields": {
+      "name": "Livermorium",
+      "symbol": "Lv",
+      "mass": 293.0000,
+      "group": "Post-Transition Metal"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 117,
+    "fields": {
+      "name": "Tennessine",
+      "symbol": "Ts",
+      "mass": 294.0000,
+      "group": "Halogen"
+    }
+  },
+  {
+    "model": "chemappapi.element",
+    "pk": 118,
+    "fields": {
+      "name": "Oganesson",
+      "symbol": "Og",
+      "mass": 294.0000,
+      "group": "Noble Gas"
+    }
+  }
+]
