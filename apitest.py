@@ -49,15 +49,6 @@ from chemspipy import ChemSpider
 # from django.db import models
 # from django.contrib.auth.models import User
 
-# class Compound(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=100)
-#     formula = models.CharField(max_length=100)
-#     data = models.JSONField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-
-#     class Meta:
-#         unique_together = ['user', 'name']
 
 # # views.py
 # from django.views import View
@@ -114,11 +105,6 @@ from chemspipy import ChemSpider
 #     path('api/compounds/', CompoundView.as_view(), name='compound_list'),
 #     path('api/compounds/<int:compound_id>/', CompoundView.as_view(), name='compound_detail'),
 # ]
-
-
-
-# another example 
-
 
 # import requests
 # from django.conf import settings
@@ -225,43 +211,3 @@ from chemspipy import ChemSpider
 #     path('api/compound-operation/', CompoundOperationView.as_view(), name='compound_operation'),
 # ]
 
-
-# model possibilities
-
-# from django.db import models
-# from django.contrib.auth.models import User
-
-# class Compound(models.Model):
-#     name = models.CharField(max_length=255)
-#     formula = models.CharField(max_length=255)
-#     smiles = models.TextField()
-#     molecular_weight = models.FloatField(null=True, blank=True)
-#     chemspider_id = models.IntegerField(unique=True)
-#     last_updated = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         return self.name
-
-# class UserCompound(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     compound = models.ForeignKey(Compound, on_delete=models.CASCADE)
-#     notes = models.TextField(blank=True)
-#     favorite = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-
-#     class Meta:
-#         unique_together = ['user', 'compound']
-
-#     def __str__(self):
-#         return f"{self.user.username} - {self.compound.name}"
-
-# class Reaction(models.Model):
-#     name = models.CharField(max_length=255)
-#     reactants = models.ManyToManyField(Compound, related_name='reactions_as_reactant')
-#     products = models.ManyToManyField(Compound, related_name='reactions_as_product')
-#     description = models.TextField(blank=True)
-#     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return self.name

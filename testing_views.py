@@ -1,21 +1,3 @@
-# example of how it could look
-
-
-# from django.db import models
-# from django.contrib.auth.models import User
-
-# class Compound(models.Model):
-#     chemspider_id = models.IntegerField(unique=True)
-#     name = models.CharField(max_length=255)
-#     formula = models.CharField(max_length=255)
-#     smiles = models.TextField()
-#     molecular_weight = models.FloatField(null=True, blank=True)
-#     last_updated = models.DateTimeField(auto_now=True)
-
-#     def __str__(self):
-#         return self.name
-      
-      
 
 # from rest_framework import serializers
 # from .models import Compound
@@ -23,7 +5,7 @@
 # class CompoundSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Compound
-#         fields = ('id', 'chemspider_id', 'name', 'formula', 'smiles', 'molecular_weight', 'last_updated')
+#         fields = ('id', 'chemspider_id', 'name', 'formula', 'smiles', 'molecular_weight')
         
 # from rest_framework.viewsets import ViewSet
 # from rest_framework.response import Response
@@ -35,8 +17,6 @@
 #     def retrieve(self, request, pk=None):
 #         try:
 #             compound = Compound.objects.get(chemspider_id=pk)
-#             if (timezone.now() - compound.last_updated).days > 7:  # Refresh data weekly
-#                 self.update_compound_from_api(compound)
 #         except Compound.DoesNotExist:
 #             compound = self.fetch_and_create_compound(pk)
         
@@ -161,7 +141,7 @@
 
 #         payload = {
 #             'formula': formula,
-#             'orderBy': 'Relevance',  # You can change this if needed
+#             'orderBy': 'Relevance', 
 #             'orderDirection': 'Descending',
 #             'limit': 10  # Limit to top 10 results
 #         }
