@@ -2,11 +2,18 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from chemappapi.models import Tree, User
+from chemappapi.models import Tree, User, Compound, TreeCompound
+from .compound import CompoundSerializer
 
 class TreeSerializer(serializers.ModelSerializer):
+    compounds = serializers.SerializerMethodField()
+    def get_compounds(self, object):
+        compound = Compound.objects.filter(trees__tree_id=object)
+        serializer = CompoundSerializer(compound, many=True)
+        return serializer.data
     class Meta:
-        fields = ('id', 'name', 'uid')
+        model = Tree
+        fields = ('id', 'name', 'uid', 'compounds')
 
 class TreeView(ViewSet):
     def retrieve(self, request, pk):
@@ -20,10 +27,10 @@ class TreeView(ViewSet):
         return Response(serializer.data)
       
     def create(self, request):
-        user = User.objects.get(uid=request.data["uid"])
+        uid = User.objects.get(uid=request.data["uid"])
         
         tree = Tree.objects.create(
-          user = user,
+          uid = uid,
           name = request.data["name"]
         )
         
@@ -34,7 +41,18 @@ class TreeView(ViewSet):
         tree = Tree.objects.get(pk=pk)
         
         tree.name = request.data["name"]
+        
+        TreeCompound.objects.filter(tree=tree).delete()
+            
         tree.save()
+        
+        for compound_id in request.data["compounds"]:
+            compound = Compound.objects.get(pk=compound_id)
+            TreeCompound.objects.create(
+                compound = compound,
+                tree = tree
+            ) 
+
         serializer = TreeSerializer(tree)
         return Response(serializer.data, status=status.HTTP_200_OK)
       
@@ -43,6 +61,3 @@ class TreeView(ViewSet):
         tree.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
       
-# action method for adding compounds to trees or for loop similar to tags? 
-# likely action method so that you create the compound add its attached to the tree id?
-# potential action method for compounds not trees to accomlpish this?

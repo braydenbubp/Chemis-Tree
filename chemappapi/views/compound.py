@@ -24,30 +24,6 @@ class CompoundView(ViewSet):
         compounds = Compound.objects.all()
         serializer = CompoundSerializer(compounds, many=True)
         return Response(serializer.data)
-    
-    # not sure if i need this now, or need to do it in a different way  
-    # def create(self, request):
-    #     user = User.objects.get(uid=request.data["uid"])
-        
-    #     compound = Compound.objects.create(
-    #         user = user,
-    #         common_name = request.data["common_name"],
-    #         formula = request.data["formula"],
-    #         smiles = request.data["smiles"],
-    #         molecular_weight = request.data["molecular_weight"],
-    #         chemspider_id = request.data["chemspider_id"],
-    #         two_d_model = request.data["two_d_model"],
-    #     )
-        
-    #     for element_id in request.data["elements"]:
-    #         element = Element.objects.get(pk=element_id)
-    #         CompoundElement.objects.create(
-    #             compound = compound,
-    #             element = element
-    #         )
-        
-    #     serializer = CompoundSerializer(compound)
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
       
     # to be fixed  
     def update(self, request, pk):
@@ -55,12 +31,10 @@ class CompoundView(ViewSet):
             compound = Compound.objects.get(pk=pk)
             user = request.data.get("user")
             include_elements = request.data.get("includeElements", [])
-            print(include_elements)
             
             compound_search = "".join(include_elements)
-            # print(compound_search)
             results = pcp.get_compounds(compound_search, "formula")
-            # print(results)
+
 
             if results:
                 pubchem_compound = results[0]
@@ -116,12 +90,9 @@ class CompoundView(ViewSet):
     @action(detail=False, methods=['post'], url_path='get_compound_by_element')
     def get_compound_by_element(self, request):
             include_elements = request.data["includeElements"]
-            # print(include_elements)
 
             compound_search = "".join(include_elements)
-            # print(compound_search)
             results = pcp.get_compounds(compound_search, "formula")
-            # print(results)
             
             if results:
                 pubchem_compound = results[0]
