@@ -4,12 +4,12 @@ from .element import Element
 
 class Compound(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="compounds")
-    common_name = models.CharField(max_length=255)
-    formula = models.CharField(max_length=255)
-    smiles = models.TextField()
+    iupac_name = models.CharField(max_length=255)
+    molecular_formula = models.CharField(max_length=255)
     molecular_weight = models.FloatField(null=True, blank=True)
-    chemspider_id = models.IntegerField(unique=True)
-    two_d_model = models.CharField(max_length=200)
+    cid = models.IntegerField(unique=True)
+    bonds = models.CharField(max_length=200)
+    synonyms = models.CharField(max_length=100)
     elements = models.ManyToManyField(Element, through='CompoundElement', related_name="compounds")
 
     @property

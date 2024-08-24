@@ -4,26 +4,19 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
 from chemappapi.models import Compound, Element, User, CompoundElement
-from chemapp.settings import CHEMSPIDER_API_KEY
-from chemspipy import ChemSpider
-from chemspipy.objects import Compound as Chem_Compound
+import pubchempy as pcp
 
 class CompoundSerializer(serializers.ModelSerializer):
     class Meta:
         model = Compound
-        fields = ('id', 'user', 'user_id', 'common_name', 'formula', 'smiles', 'molecular_weight', 'chemspider_id', 'two_d_model', 'elements')
+        fields = ('id', 'user', 'user_id', 'iupac_name', 'molecular_formula', 'molecular_weight', 'cid', 'bonds', 'synonyms', 'elements')
         depth = 2
         
-cs = ChemSpider(CHEMSPIDER_API_KEY)
 class CompoundView(ViewSet):
     
     def retrieve(self, request, pk):
-        print(request.data)
-        compound = cs.filter_element(self, include_elements, exclude_elements=None, include_all=False)
-        print(compound)
-        
-        
-        # compound = Compound.objects.get(chemspider_id=pk)
+        compound = Compound.objects.get(pk = compound.cid)
+
         serializer = CompoundSerializer(compound)
         return Response(serializer.data)
       
@@ -31,7 +24,8 @@ class CompoundView(ViewSet):
         compounds = Compound.objects.all()
         serializer = CompoundSerializer(compounds)
         return Response(serializer.data, many=True)
-      
+    
+    # not sure if i need this now, or need to do it in a different way  
     def create(self, request):
         user = User.objects.get(uid=request.data["uid"])
         
@@ -55,6 +49,7 @@ class CompoundView(ViewSet):
         serializer = CompoundSerializer(compound)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
       
+    # to be fixed  
     def update(self, request, pk):
         compound = Compound.objects.get(pk=pk)
                 
@@ -85,37 +80,35 @@ class CompoundView(ViewSet):
         compound = Compound.objects.get(pk=pk)
         compound.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    
+
             
-    # this works but returns the queryId and not the bject    
-    # after fixing queryId being the response, an error for compond not existing arises due to syntax
-    # i.e H{2}O{2} instead of H2O2 which is needed for the api 
+    
     @action(detail=False, methods=['post'], url_path='get_compound_by_element')
     def get_compound_by_element(self, request):
             include_elements = request.data["includeElements"]
+            print(include_elements)
 
-            element_symbols = []
-            for element in include_elements:
-                search_result = cs.search(element)
-                element_symbols.append(search_result[0].molecular_formula)
-
-            print(f'element_symbols', element_symbols)
-            formula = ''.join(element_symbols)
-            try:
-                response = cs.filter_formula(formula)
-                if 'queryId' in response:
-                    compound_data = cs.filter_results(response['queryId'])
-                    return Response({
-                        'csid': compound_data.csid,
-                        'molecular_formula': compound_data.molecular_formula,
-                        'molecular_weight': compound_data.molecular_weight,
-                        'iupac_name': compound_data.iupac_name,
-                        'smiles': compound_data.smiles,
-                        'inchi': compound_data.inchi,
-                        'inchikey': compound_data.inchikey,
-                    })
-                else:
-                    return Response({"error": f"No compound found for formula: {formula}"}, status=404)
-            except Exception as e:
-                print(f"Error retrieving compound: {e}")
-                return Response({"error": str(e)}, status=400)
+            compound_search = "".join(include_elements)
+            print(compound_search)
+            results = pcp.get_compounds(compound_search, "formula")
+            print(results)
+            
+            if results:
+                pubchem_compound = results[0]
+                print(results[0].iupac_name)               
+                user = User.objects.get(pk = request.data["user"])
+                compound = Compound.objects.create(
+                    user = user,
+                    molecular_formula = pubchem_compound.molecular_formula,
+                    iupac_name = pubchem_compound.iupac_name,
+                    molecular_weight = pubchem_compound.molecular_weight,
+                    cid = pubchem_compound.cid,
+                    bonds = [{'aid1': bond.aid1, 'aid2': bond.aid2, 'order': bond.order} for bond in pubchem_compound.bonds],
+                    synonyms = pubchem_compound.synonyms
+                )
+                
+                serializer = CompoundSerializer(compound)
+                
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response({"message": "No compound found"}, status=status.HTTP_404_NOT_FOUND)
