@@ -1,0 +1,10 @@
+[
+  {
+    "model": "chemappapi.user",
+    "pk": 1,
+    "fields": {
+      "name": "Hydrogen",
+      "uid": "bvjioerbf7575"
+    }
+  }
+]
