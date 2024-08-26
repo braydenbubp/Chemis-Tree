@@ -11,9 +11,12 @@ class ElementSerializer(serializers.ModelSerializer):
         
 class ElementView(ViewSet):
     def retrieve(self, request, pk):
-        element = Element.objects.get(pk=pk)
-        serializer = ElementSerializer(element)
-        return Response(serializer.data)
+        try:
+            element = Element.objects.get(pk=pk)
+            serializer = ElementSerializer(element)
+            return Response(serializer.data)
+        except Element.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
       
     def list(self, request):
         elements = Element.objects.all()

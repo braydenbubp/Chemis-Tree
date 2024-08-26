@@ -3,7 +3,6 @@ from rest_framework.test import APITestCase
 from rest_framework.authtoken.models import Token
 from chemappapi.models import User
 from chemappapi.views.user import UserSerializer
-import sys
 
 class UserTests(APITestCase):
     fixtures = ['users']
