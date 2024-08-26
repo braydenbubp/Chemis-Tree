@@ -17,9 +17,12 @@ class TreeSerializer(serializers.ModelSerializer):
 
 class TreeView(ViewSet):
     def retrieve(self, request, pk):
-        tree = Tree.objects.get(pk=pk)
-        serializer = TreeSerializer(tree)
-        return Response(serializer.data)
+        try:
+            tree = Tree.objects.get(pk=pk)
+            serializer = TreeSerializer(tree)
+            return Response(serializer.data)
+        except Tree.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
       
     def list(self, request):
         trees = Tree.objects.all()
