@@ -11,9 +11,12 @@ class UserSerializer(serializers.ModelSerializer):
         
 class UserView(ViewSet):
     def retrieve(self, request, pk):
-        user = User.objects.get(uid=pk)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+        try:
+            user = User.objects.get(id=pk)
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
       
     def list(self, request):
         users = User.objects.all()
@@ -32,7 +35,7 @@ class UserView(ViewSet):
 
     # comment out after BE MVP
     def update(self, request, pk):
-        user = User.objects.get(pk=pk)
+        user = User.objects.get(id=pk)
         user.name = request.data["name"]
         user.uid = request.data["uid"]
         
@@ -42,6 +45,6 @@ class UserView(ViewSet):
       
     # comment out after BE MVP  
     def destroy(self, request, pk):
-        user = User.objects.get(pk=pk)
+        user = User.objects.get(id=pk)
         user.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
