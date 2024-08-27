@@ -15,11 +15,14 @@ class CompoundSerializer(serializers.ModelSerializer):
 class CompoundView(ViewSet):
     
     def retrieve(self, request, pk):
-        compound = Compound.objects.get(pk = pk)
+        try:
+            compound = Compound.objects.get(pk = pk)
 
-        serializer = CompoundSerializer(compound)
-        return Response(serializer.data)
-      
+            serializer = CompoundSerializer(compound)
+            return Response(serializer.data)
+        except Compound.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
     def list(self, request):
         compounds = Compound.objects.all()
         serializer = CompoundSerializer(compounds, many=True)
