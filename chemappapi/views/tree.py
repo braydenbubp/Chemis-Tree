@@ -14,6 +14,7 @@ class TreeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tree
         fields = ('id', 'name', 'uid', 'compounds')
+        depth = 1
 
 class TreeView(ViewSet):
     def retrieve(self, request, pk):

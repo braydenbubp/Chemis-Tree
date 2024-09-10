@@ -92,14 +92,17 @@ class CompoundView(ViewSet):
     
     @action(detail=False, methods=['post'], url_path='get_compound_by_element')
     def get_compound_by_element(self, request):
+            print("func called")
+            print("requested data", request.data)
             include_elements = request.data["includeElements"]
+            user_uid = request.data["user"]
 
             compound_search = "".join(include_elements)
             results = pcp.get_compounds(compound_search, "formula")
             
             if results:
                 pubchem_compound = results[0]
-                user = User.objects.get(pk = request.data["user"])
+                user = User.objects.get(uid=user_uid)
                 compound = Compound.objects.create(
                     user = user,
                     molecular_formula = pubchem_compound.molecular_formula,
