@@ -1,4 +1,5 @@
 from django.http import HttpResponseServerError
+from django.db import transaction
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
@@ -92,42 +93,56 @@ class CompoundView(ViewSet):
     
     @action(detail=False, methods=['post'], url_path='get_compound_by_element')
     def get_compound_by_element(self, request):
-            print("func called")
-            print("requested data", request.data)
             include_elements = request.data["includeElements"]
             user_uid = request.data["user"]
+            user = User.objects.get(uid=user_uid)
+            
+            if not include_elements or not user_uid:
+                return Response({"message": "Missing required data"}, status=status.HTTP_404_NOT_FOUND)
 
             compound_search = "".join(include_elements)
             results = pcp.get_compounds(compound_search, "formula")
             
-            if results:
-                pubchem_compound = results[0]
-                user = User.objects.get(uid=user_uid)
-                compound = Compound.objects.create(
-                    user = user,
-                    molecular_formula = pubchem_compound.molecular_formula,
-                    iupac_name = pubchem_compound.iupac_name,
-                    molecular_weight = pubchem_compound.molecular_weight,
-                    cid = pubchem_compound.cid,
-                    bonds = [{'aid1': bond.aid1, 'aid2': bond.aid2, 'order': bond.order} for bond in pubchem_compound.bonds],
-                    synonyms = pubchem_compound.synonyms[:10] if pubchem_compound.synonyms else [],
-                )
-                
-                for element_symbol in request.data["includeElements"]:
-                    try:
-                        element = Element.objects.get(symbol = element_symbol)
-                        CompoundElement.objects.create(
-                            compound = compound,
-                            element = element
-                        )
-                    except Element.DoesNotExist:
-                        print(f"element {element_symbol} DNE")
-                
-                serializer = CompoundSerializer(compound)
-                
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            else:
-                return Response({"message": "No compound found"}, status=status.HTTP_404_NOT_FOUND)
-
-
+            if not results:
+                return Response({"message": "Compound not found"}, status=status.HTTP_404_NOT_FOUND)
             
+            pubchem_compound = results[0]
+            
+            existing_compound_check = Compound.objects.filter(
+                user = user,
+                cid = pubchem_compound.cid
+            ).first()
+            
+            if existing_compound_check:
+                serializer = CompoundSerializer(existing_compound_check)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            
+            
+            try:
+                with transaction.atomic():
+                    compound = Compound.objects.create(
+                        user = user,
+                        molecular_formula = pubchem_compound.molecular_formula,
+                        iupac_name = pubchem_compound.iupac_name or "Not Available",
+                        molecular_weight = pubchem_compound.molecular_weight,
+                        cid = pubchem_compound.cid,
+                        bonds = [{'aid1': bond.aid1, 'aid2': bond.aid2, 'order': bond.order} for bond in pubchem_compound.bonds],
+                        synonyms = pubchem_compound.synonyms[:10] if pubchem_compound.synonyms else [],
+                    )
+                    
+                    for element_symbol in request.data["includeElements"]:
+                        try:
+                            element = Element.objects.get(symbol = element_symbol)
+                            CompoundElement.objects.create(
+                                compound = compound,
+                                element = element
+                            )
+                        except Element.DoesNotExist:
+                            print(f"element {element_symbol} DNE")
+                    
+                    serializer = CompoundSerializer(compound)
+                    return Response(serializer.data, status=status.HTTP_200_OK)
+            except ValueError as e:
+                return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as e:
+                return Response({"message": "An error occured while querying the database"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
