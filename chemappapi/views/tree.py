@@ -38,6 +38,13 @@ class TreeView(ViewSet):
           name = request.data["name"]
         )
         
+        for compound_id in request.data.get("compounds", []):
+            compound = Compound.objects.get(pk=compound_id)
+            TreeCompound.objects.create(
+                compound = compound,
+                tree = tree
+            ) 
+        
         serializer = TreeSerializer(tree)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
       
@@ -46,11 +53,13 @@ class TreeView(ViewSet):
         
         tree.name = request.data["name"]
         
-        TreeCompound.objects.filter(tree=tree).delete()
+        tree_compounds = TreeCompound.objects.filter(tree_id=tree.id)
+        for compounds in tree_compounds:
+            compounds.delete()
             
         tree.save()
         
-        for compound_id in request.data["compounds"]:
+        for compound_id in request.data.get("compounds", []):
             compound = Compound.objects.get(pk=compound_id)
             TreeCompound.objects.create(
                 compound = compound,

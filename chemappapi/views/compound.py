@@ -25,9 +25,16 @@ class CompoundView(ViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
         
     def list(self, request):
-        compounds = Compound.objects.all()
-        serializer = CompoundSerializer(compounds, many=True)
-        return Response(serializer.data)
+        try:
+            user = request.query_params.get('uid', None)
+            if user is not None:
+                user_id = User.objects.get(uid=user)
+                compounds = Compound.objects.filter(user = user_id)
+
+            serializer = CompoundSerializer(compounds, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({"message": "An error occured"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
       
     # to be fixed  
     def update(self, request, pk):
