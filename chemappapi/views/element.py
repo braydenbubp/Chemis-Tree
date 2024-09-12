@@ -7,7 +7,7 @@ from chemappapi.models import Element
 class ElementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Element
-        fields = ('id', 'name', 'symbol', 'mass', 'group')
+        fields = ('id', 'name', 'symbol', 'mass', 'group', 'link')
         
 class ElementView(ViewSet):
     def retrieve(self, request, pk):
@@ -24,31 +24,31 @@ class ElementView(ViewSet):
         return Response(serializer.data)
       
     # comment out after BE MVP   
-    def create(self, request):
-        element = Element.objects.create(
-            name = request.data["name"],
-            symbol = request.data["symbol"],
-            mass = request.data["mass"],
-            group = request.data["group"]
-        )
+    # def create(self, request):
+    #     element = Element.objects.create(
+    #         name = request.data["name"],
+    #         symbol = request.data["symbol"],
+    #         mass = request.data["mass"],
+    #         group = request.data["group"]
+    #     )
         
-        serializer = ElementSerializer(element)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     serializer = ElementSerializer(element)
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     # comment out after BE MVP
-    def update(self, request, pk):
-        element = Element.objects.get(pk=pk)
-        element.name = request.data["name"]
-        element.symbol = request.data["symbol"]
-        element.mass = request.data["mass"]
-        element.group = request.data["group"]
+    # def update(self, request, pk):
+    #     element = Element.objects.get(pk=pk)
+    #     element.name = request.data["name"]
+    #     element.symbol = request.data["symbol"]
+    #     element.mass = request.data["mass"]
+    #     element.group = request.data["group"]
         
-        element.save()
-        serializer = ElementSerializer(element)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    #     element.save()
+    #     serializer = ElementSerializer(element)
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
       
     # comment out after BE MVP  
-    def destroy(self, request, pk):
-        element = Element.objects.get(pk=pk)
-        element.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    # def destroy(self, request, pk):
+    #     element = Element.objects.get(pk=pk)
+    #     element.delete()
+    #     return Response(None, status=status.HTTP_204_NO_CONTENT)
