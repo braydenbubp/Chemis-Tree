@@ -5,3 +5,4 @@ class Element(models.Model):
     symbol = models.CharField(max_length=8)
     mass = models.IntegerField()
     group = models.CharField(max_length=50)
+    link = models.CharField(max_length=100)
