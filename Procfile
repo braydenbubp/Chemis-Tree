@@ -1,1 +1,1 @@
-web: conda run -n chemapp-env gunicorn chemapp.wsgi:application
+web: gunicorn chemapp.wsgi:application
