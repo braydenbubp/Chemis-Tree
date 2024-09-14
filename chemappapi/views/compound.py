@@ -18,7 +18,7 @@ class CompoundSerializer(serializers.ModelSerializer):
     model_2d_url = serializers.SerializerMethodField()
     class Meta:
         model = Compound
-        fields = ('id', 'user', 'user_id', 'iupac_name', 'molecular_formula', 'molecular_weight', 'cid', 'bonds', 'synonyms', 'elements', 'model_2d', 'model_2d_url')
+        fields = ('id', 'user', 'user_id', 'iupac_name', 'molecular_formula', 'molecular_weight', 'cid', 'bonds', 'synonyms', 'elements', 'model_2d', 'model_2d_url', 'info_link')
         depth = 2
         
     def get_model_2d_url(self, obj):
@@ -149,6 +149,7 @@ class CompoundView(ViewSet):
                         cid = pubchem_compound.cid,
                         bonds = json.dumps([{'aid1': bond.aid1, 'aid2': bond.aid2, 'order': bond.order} for bond in pubchem_compound.bonds]),
                         synonyms = json.dumps(pubchem_compound.synonyms[:10] if pubchem_compound.synonyms else []),
+                        info_link = f"https://pubchem.ncbi.nlm.nih.gov/compound/{pubchem_compound.cid}"
                     )
                     
                     mol = Chem.MolFromSmiles(pubchem_compound.isomeric_smiles)
