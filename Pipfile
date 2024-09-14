@@ -15,6 +15,7 @@ dj-database-url = "*"
 psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-environ = "*"
 
 [dev-packages]
 
