@@ -1,0 +1,10 @@
+name: chemapp-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - rdkit
+  - pip
+  - pip:
+    - -r requirements.txt
