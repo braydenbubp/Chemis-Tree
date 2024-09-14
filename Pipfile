@@ -16,6 +16,7 @@ psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-environ = "*"
+django-storages = "*"
 
 [dev-packages]
 
