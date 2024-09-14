@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 from environ import Env
 import dj_database_url
@@ -122,6 +123,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+rdkit_path = '/app/.heroku/python/lib/python3.9/site-packages'
+if rdkit_path not in sys.path:
+    sys.path.append(rdkit_path)
+
+os.environ['RDBASE'] = '/app/.heroku/python/lib/python3.9/site-packages/rdkit'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

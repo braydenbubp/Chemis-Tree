@@ -1,2 +1,5 @@
 libxrender1
 libxext6
+libsm6
+libxext-dev
+libxrender-dev
