@@ -1,17 +1,33 @@
+import json
+import traceback
+from rdkit import Chem
+from rdkit.Chem import Draw
 from django.http import HttpResponseServerError
 from django.db import transaction
+from django.conf import settings
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
 from chemappapi.models import Compound, Element, User, CompoundElement
 import pubchempy as pcp
+from io import BytesIO
+from django.core.files.base import ContentFile
 
 class CompoundSerializer(serializers.ModelSerializer):
+    model_2d_url = serializers.SerializerMethodField()
     class Meta:
         model = Compound
-        fields = ('id', 'user', 'user_id', 'iupac_name', 'molecular_formula', 'molecular_weight', 'cid', 'bonds', 'synonyms', 'elements')
+        fields = ('id', 'user', 'user_id', 'iupac_name', 'molecular_formula', 'molecular_weight', 'cid', 'bonds', 'synonyms', 'elements', 'model_2d', 'model_2d_url')
         depth = 2
+        
+    def get_model_2d_url(self, obj):
+        if obj.model_2d:
+            request = self.context.get('request')
+            if request is not None:
+                return request.build_absolute_uri(obj.model_2d.url)
+            return f"{settings.MEDIA_URL}{obj.model_2d.name}"
+        return None
         
 class CompoundView(ViewSet):
     
@@ -95,8 +111,7 @@ class CompoundView(ViewSet):
         compound = Compound.objects.get(pk=pk)
         compound.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-
-            
+    
     
     @action(detail=False, methods=['post'], url_path='get_compound_by_element')
     def get_compound_by_element(self, request):
@@ -124,7 +139,6 @@ class CompoundView(ViewSet):
                 serializer = CompoundSerializer(existing_compound_check)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             
-            
             try:
                 with transaction.atomic():
                     compound = Compound.objects.create(
@@ -133,9 +147,17 @@ class CompoundView(ViewSet):
                         iupac_name = pubchem_compound.iupac_name or "Not Available",
                         molecular_weight = pubchem_compound.molecular_weight,
                         cid = pubchem_compound.cid,
-                        bonds = [{'aid1': bond.aid1, 'aid2': bond.aid2, 'order': bond.order} for bond in pubchem_compound.bonds],
-                        synonyms = pubchem_compound.synonyms[:10] if pubchem_compound.synonyms else [],
+                        bonds = json.dumps([{'aid1': bond.aid1, 'aid2': bond.aid2, 'order': bond.order} for bond in pubchem_compound.bonds]),
+                        synonyms = json.dumps(pubchem_compound.synonyms[:10] if pubchem_compound.synonyms else []),
                     )
+                    
+                    mol = Chem.MolFromSmiles(pubchem_compound.isomeric_smiles)
+                    img = Draw.MolToImage(mol)
+                    
+                    img_io = BytesIO()
+                    img.save(img_io, format='PNG')
+                    img_content = ContentFile(img_io.getvalue())
+                    compound.model_2d.save(f"{compound.cid}_2d.png", img_content)
                     
                     for element_symbol in request.data["includeElements"]:
                         try:
@@ -147,8 +169,15 @@ class CompoundView(ViewSet):
                         except Element.DoesNotExist:
                             print(f"element {element_symbol} DNE")
                     
-                    serializer = CompoundSerializer(compound)
-                    return Response(serializer.data, status=status.HTTP_200_OK)
+                    try:
+                        serializer = CompoundSerializer(compound, context={'request': request})
+                        print(serializer.data['model_2d_url'])
+                        return Response(serializer.data, status=status.HTTP_201_CREATED)
+                    except Exception as e:
+                        print(f'error: {str(e)}')
+                        print(f"traceback: {traceback.format_exc()}")
+                        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
             except ValueError as e:
                 return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
             except Exception as e:
