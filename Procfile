@@ -1,2 +1,1 @@
-web: gunicorn chemapp.wsgi
-release: python manage.py makemigrations; python manage.py migrate;
+web: conda run -n chemapp-env gunicorn chemapp.wsgi:application
