@@ -27,7 +27,7 @@ pylint-django==2.5.3
 pylint-plugin-utils==0.8.2
 python-dateutil==2.9.0.post0
 pytz==2024.2
-rdkit-pypi==2024.3.5
+rdkit==2024.3.5
 s3transfer==0.10.2
 setuptools==49.2.1
 six==1.16.0
