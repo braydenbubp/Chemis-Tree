@@ -1,10 +1,11 @@
-
 name: myenv
 channels:
   - conda-forge
   - defaults
 dependencies:
   - python=3.9
+  - conda=4.10.3
   - pip
+  - rdkit=2024.3.5
   - pip:
     - -r requirements.txt
