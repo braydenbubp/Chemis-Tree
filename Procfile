@@ -1,2 +1,1 @@
-web gunicorn app.wsgi
-
+web: gunicorn chemapp.wsgi
