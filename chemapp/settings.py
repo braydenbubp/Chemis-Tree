@@ -95,14 +95,16 @@ WSGI_APPLICATION = 'chemapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#   'default': dj_database_url.config(
+#     default='sqlite:///{path}/db.sqlite3'.format(path=BASE_DIR),
+#     conn_max_age=600,
+#     conn_health_checks=True,
+#   )
+# }
 DATABASES = {
-  'default': dj_database_url.config(
-    default='sqlite:///{path}/db.sqlite3'.format(path=BASE_DIR),
-    conn_max_age=600,
-    conn_health_checks=True,
-  )
-}
-
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+} 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
