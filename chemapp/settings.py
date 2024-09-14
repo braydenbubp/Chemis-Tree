@@ -123,11 +123,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-rdkit_path = '/app/.heroku/python/lib/python3.9/site-packages'
-if rdkit_path not in sys.path:
-    sys.path.append(rdkit_path)
+try:
+    import rdkit
+    print(f"RDKit version: {rdkit.__version__}")
+except ImportError:
+    print("Failed to import RDKit")
+    print(f"Python path: {sys.path}")
+    print(f"Current working directory: {os.getcwd()}")
 
-os.environ['RDBASE'] = '/app/.heroku/python/lib/python3.9/site-packages/rdkit'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
