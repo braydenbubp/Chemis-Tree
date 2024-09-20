@@ -23,7 +23,7 @@ RUN pip install rdkit
 # RUN rm /app/rdkit-2024.3.5-cp39-cp39-win_amd64.whl
 
 # Collect static files
-RUN python manage.py collectstatic --noinput
+# RUN python manage.py collectstatic --noinput
 
 # Run gunicorn
-CMD gunicorn chemapp.wsgi:application --bind 0.0.0.0:$PORT
+CMD python manage.py collectstatic --noinput && gunicorn chemapp.wsgi:application --bind 0.0.0.0:$PORT
