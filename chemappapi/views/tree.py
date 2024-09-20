@@ -27,10 +27,10 @@ class TreeView(ViewSet):
     
     def list(self, request):
         try:
-            user = request.query_params.get('uid', None)
-            if user is not None:
-                user_id = User.objects.get(uid=user)
-                trees = Tree.objects.filter(user = user_id)
+            uid = request.query_params.get('uid', None)
+            if uid is not None:
+                user_id = User.objects.get(uid=uid)
+                trees = Tree.objects.filter(uid = user_id)
 
             serializer = TreeSerializer(trees, many=True)
             return Response(serializer.data)
