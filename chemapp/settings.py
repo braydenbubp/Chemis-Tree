@@ -123,14 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-try:
-    import rdkit
-    print(f"RDKit version: {rdkit.__version__}")
-except ImportError:
-    print("Failed to import RDKit")
-    print(f"Python path: {sys.path}")
-    print(f"Current working directory: {os.getcwd()}")
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
