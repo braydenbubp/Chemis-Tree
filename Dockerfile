@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
     python3-dev \
+    libxrender1 \
+    libxext6 \
+    libcairo2 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . /app/
