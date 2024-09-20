@@ -24,11 +24,18 @@ class TreeView(ViewSet):
             return Response(serializer.data)
         except Tree.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-      
+    
     def list(self, request):
-        trees = Tree.objects.all()
-        serializer = TreeSerializer(trees, many=True)
-        return Response(serializer.data)
+        try:
+            user = request.query_params.get('uid', None)
+            if user is not None:
+                user_id = User.objects.get(uid=user)
+                trees = Tree.objects.filter(user = user_id)
+
+            serializer = TreeSerializer(trees, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({"message": "An error occured"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
       
     def create(self, request):
         uid = User.objects.get(uid=request.data["uid"])
